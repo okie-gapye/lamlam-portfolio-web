@@ -32,7 +32,7 @@ body {
     top: 0;
     width: 100%;
 
-    /* 修正手機溢出：減少與上下邊框距離 (8px -> 5px) 和水平邊距 (28px -> 10px) */
+    /* 修正手機溢出：減少與上下邊框距離 (5px) 和水平邊距 (10px) */
     padding: 5px 10px;
 
     background-color: #000;
@@ -56,21 +56,26 @@ body {
 
 #site_header nav {
     display: flex;
-    /* 保持桌面間距 (2rem)，並應用於預設 (手機) 樣式，依使用者要求不修改此項 */
+    /* 桌面/平板間距 */
     gap: 2rem;
     align-items: center; /* 確保垂直置中 */
 }
 
 /* --- 手機/小螢幕 字體縮小及間距調整 (避免溢出的關鍵修正) --- */
-@media (max-width: 750px) {
+@media (max-width: 767px) {
+    /* 關鍵修正：大幅縮小項目間距，以避免溢出 */
+    #site_header nav {
+        gap: 0.75rem; /* 從 2rem 縮小到 0.75rem (約 12px) */
+    }
+
     /* 縮小所有連結的字體大小，防止因寬度不足而溢出 */
     #site_header nav a {
-        font-size: 0.8rem; /* 從 1rem 進一步縮小到 0.9rem */
+        font-size: 0.9rem;
     }
 
     /* 縮小 Semi-underground Press 專用連結的字體大小 */
     #site_header nav a.semi-link {
-        font-size: 0.7rem; /* 從 0.85rem 進一步縮小到 0.8rem */
+        font-size: 0.8rem;
         /* 由於字體縮小，line-height 也要微調以維持視覺平衡 */
         line-height: 1.1;
     }
@@ -89,8 +94,8 @@ body {
 #site_header nav a.semi-link {
     color: rgb(255, 0, 0);
     /* 桌面/平板的字體大小 */
-    font-size: 1rem;
-    line-height: 0.8;
+    font-size: 1.1rem;
+    line-height: 0.9;
     font-weight: 800;
     text-align: left;
     display: flex;
