@@ -170,16 +170,16 @@ layout: base.njk
   {% if work.quotes %}
   <section class="work-quotes">
     {% if work.quotes.en %}
-      <blockquote class="work-quote lang-en">{{ work.quotes.en }}</blockquote>
+      <blockquote class="work-quote lang-en">{{ work.quotes.en | safe }}</blockquote>
     {% endif %}
     {% if work.quotes.zh %}
-      <blockquote class="work-quote lang-zh">{{ work.quotes.zh }}</blockquote>
+      <blockquote class="work-quote lang-zh">{{ work.quotes.zh | safe }}</blockquote>
     {% endif %}
     {% if work.quotes.jp %}
-      <blockquote class="work-quote lang-jp">{{ work.quotes.jp }}</blockquote>
+      <blockquote class="work-quote lang-jp">{{ work.quotes.jp | safe }}</blockquote>
     {% endif %}
     {% if work.quotes.de %}
-      <blockquote class="work-quote lang-de">{{ work.quotes.de }}</blockquote>
+      <blockquote class="work-quote lang-de">{{ work.quotes.de | safe }}</blockquote>
     {% endif %}
   </section>
   {% endif %}
