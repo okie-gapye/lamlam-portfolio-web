@@ -23,19 +23,35 @@ body {
 /* === HEADER SPECIFIC STYLES (根據使用者需求修改為置中對齊) === */
 #site_header {
     display: flex;
-    /* 修正：將內容置中，而非靠右 */
-    justify-content: right;
+
+    /* 預設樣式 (適用於手機/小螢幕)：置中對齊 */
+    justify-content: center;
+
     align-items: center;
     position: sticky;
     top: 0;
     width: 100%;
-    padding: 8px 28px;
+
+    /* 修正手機溢出：在小螢幕上使用較小的水平 padding，防止內容擠壓超出邊界 */
+    padding: 8px 15px;
+
     background-color: #000;
     color: white;
     z-index: 1000;
     /* 假設此變數已在其他地方定義，若無定義可能需要移除或替換 */
     font-family: var(--font-main);
     font-weight: 600;
+}
+
+/* 桌面/平板佈局 (min-width: 768px) */
+@media (min-width: 768px) {
+    #site_header {
+        /* 桌面：靠右對齊 (flex-end) */
+        justify-content: flex-end;
+
+        /* 桌面：使用您原本較大的 padding */
+        padding: 8px 28px;
+    }
 }
 
 #site_header nav {
