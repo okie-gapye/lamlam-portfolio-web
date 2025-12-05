@@ -32,8 +32,8 @@ body {
     top: 0;
     width: 100%;
 
-    /* 修正手機溢出：在小螢幕上使用較小的水平 padding，防止內容擠壓超出邊界 */
-    padding: 8px 15px;
+    /* 修正手機溢出：在小螢幕上使用更小的水平 padding */
+    padding: 8px 10px; /* 從 15px 減少到 10px */
 
     background-color: #000;
     color: white;
@@ -56,8 +56,16 @@ body {
 
 #site_header nav {
     display: flex;
-    gap: 2rem; /* 讓間距統一 */
+    /* 修正手機溢出：預設 (手機) 使用更小的間距來避免溢出 */
+    gap: 0.5rem; /* 從 2rem 減少到 0.5rem (8px) */
     align-items: center; /* 確保垂直置中 */
+}
+
+/* 桌面/平板佈局 (min-width: 768px) - 恢復桌面間距 */
+@media (min-width: 768px) {
+    #site_header nav {
+        gap: 2rem; /* 恢復桌面/平板的間距 */
+    }
 }
 
 #site_header nav a {
