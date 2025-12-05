@@ -3,7 +3,7 @@
     "slug": "hokkien-dialect",
     "title": "[Short film] Hokkien Dialect",
     "year": 2018,
-    "thumbnail": "/images/Screenshot 2022-06-30 at 12.40.29.png",
+    "thumbnail": "/images/Screenshot 2022-06-30 at 12.40.29",
     "images": [],
     "video": "https://www.youtube.com/embed/WnPtQZdohNY",
     "content": "4'12\" | 2017 | In Cantonese and Southern Min with Chinese subtitles.<br><br>This is about the contradicting and delicate relationship between my dad and I.<br>Awarded ifva HongKong 2017 (Incubator for Film and Visual Media in Asia) Youth Category − Special Mention."
@@ -13,14 +13,14 @@
     "title": "[Performance] 自白",
     "year": 2018,
     "thumbnail": "/images/DSCF2892.jpg",
-    "images": ["/images/pc_portfolio_images8.jpg", "/images/DSCF2882.JPG"],
+    "images": ["/images/pc_portfolio_images8.jpg", "/images/DSCF2882.jpg"],
     "video": [
       {
-        "src": "/images/zibai_live_archive1.mp4",
+        "src": "https://www.youtube.com/embed/y1VA6lkKf6E",
         "vertical": true
       },
       {
-        "src": "/images/zibai_live_archive2.mp4",
+        "src": "https://www.youtube.com/embed/l8mEzcPnVJI",
         "vertical": true
       }
     ],
@@ -30,7 +30,7 @@
     "slug": "sleepwalking",
     "title": "[Animation] Sleepwalking",
     "year": 2019,
-    "thumbnail": "/images/Screenshot 2022-06-30 at 12.41.26.png",
+    "thumbnail": "/images/Screenshot 2022-06-30 at 12.41.26",
     "images": [],
     "video": "https://player.vimeo.com/video/510065342",
     "content": "1'26\" | 2019"
@@ -39,8 +39,8 @@
     "slug": "3-points-to-a-line",
     "title": "[Video/Performance] 3 Points to a Line",
     "year": 2021,
-    "thumbnail": "/images/00057olamlam_book_png.png",
-    "images": ["/images/2021kuaanual-54.jpeg","/images/2021kuaanual-55.jpeg","/images/2021kuaanual-56.jpeg"],
+    "thumbnail": "/images/00057olamlam_book_png.jpg",
+    "images": ["/images/2021kuaanual-54.jpg","/images/2021kuaanual-55.jpg","/images/2021kuaanual-56.jpg"],
     "video": "https://www.youtube.com/embed/lJmMjKG6H5A",
     "content": "18'30\" | 2020 | In Cantonese, English, Japanses and Mandarin with English subtitles.<br><br>Paper dolls are used in south Asian Taoism for funeral, makes disembodied ghosts possess the spirits on them or burn it to families who passed away can accompany by someone in the world of death. As a connection, a media, I shared a part of my spirit into my paper clone and engaged with others. Living under different boundaries, communication in reality seems abnormal, especially during the pandemic.  <br>3 Points to a Line is a performance but also a self documentary. it is attempt to create a new form of daily life-style during or even after the pandemic."
   },
@@ -48,8 +48,8 @@
     "slug": "ddr",
     "title": "[Video/Installation] DDR, Distortion Diary Remains",
     "year": 2022,
-    "thumbnail": "/images/20220223_TOKYO TEN_0170.jpeg",
-    "images": ["/images/20220223_TOKYO TEN_0166.jpeg","/images/20220223_TOKYO TEN_0168.jpeg","/images/20220223_TOKYO TEN_0172.jpeg"],
+    "thumbnail": "/images/20220223_TOKYO TEN_0170.jpg",
+    "images": ["/images/20220223_TOKYO TEN_0166.jpg","/images/20220223_TOKYO TEN_0168.jpg","/images/20220223_TOKYO TEN_0172.jpg"],
     "video": "https://www.youtube.com/embed/JDt4yJhZ5Vk",
     "content": "I have been tendency to creating some body movements unconsciously. The peculiar habit of body movement that embodies is regarded as \"dance\" by myself. I wound like to invite you to do the same movement such as moving the body like the instructional video of gymnastics, and create a place for dialogue in bodies through the form of a dance game."
   },
@@ -80,7 +80,7 @@
     "slug": "c-p-s-a-n",
     "title": "[Video/Installation] Change: Positive, satisfying, and nothing",
     "year": 2023,
-    "thumbnail": "/images/DSC05115.jpeg",
+    "thumbnail": "/images/DSC05115.jpg",
     "images": ["/images/artwork_image-1.jpg","/images/artwork_image-2.jpg"],
     "video": "https://www.youtube.com/embed/zuAOw5_r0LU",
     "content": "38'14\" | 2023 | In  Japanses with Chinese and English subtitles<br><br>At the end of spring and the beginning of summer, when the cool air and warm air alternate, the water vapours in the air condense into rain. Rainy days are irritating. The rainwater seeps down the socks into the shoes; the rainwater converges at the junction, disturbing every step. The season also makes wounds ache. The rain triggers our senses, slows down the time, and makes the space feel like a void—even just sitting at home everything seems irritating. A meteorologist tried to change this pessimistic cycle, isolating the humid air that permeated around her, as well as the distressing memories that infiltrated into the moist air.",
@@ -90,8 +90,8 @@
     "slug": "e-s-t-u-d-e",
     "title": "[Ceramic] Ein süßer Traum unter der Erde",
     "year": 2023,
-    "thumbnail": "/images/_A1A0320.JPG",
-    "image": ["/images/_A1A0320.JPG","/images/_A1A0321.JPG","/images/_A1A0318.JPG","/images/_A1A0322.JPG"],
+    "thumbnail": "/images/_A1A0320.jpg",
+    "image": ["/images/_A1A0320.jpg","/images/_A1A0321.jpg","/images/_A1A0318.jpg","/images/_A1A0322.jpg"],
     "video": "https://player.vimeo.com/video/906877918",
     "quotes": {
       "en": "During a two-week period of heavy rainfall, an individual discovered a cake-shaped sculpture while jogging near Donaukanal. Recognizing its potential significance, the sculpture was cleaned and displayed on a windowsill with thriving plants. A friend of this person, also an archaeologist confirmed its ancient origins dating back 5,000 years and transported it to a laboratory for analysis. Returning to the discovery site revealed another incomplete cake-shaped sculpture.<br><br>Research determined that the sculptures originated around 4,000 BC, associated with enigmatic Danubian Neolithic cultures. Pottery held great importance during the Neolithic era, and experimentation revealed that firing grey clay from riverside sources with iron elements and minerals produced an appealing orange-pink color. Ancient societies believed this pottery possessed divine properties, considering it a gift from the river with supernatural power. Similar practices persist in present-day Kazakhstan, reflecting the enduring connection between human instincts and the pursuit of essential minerals for well-being.<br><br>But why did ancient people shape pottery like cakes? From an anthropological perspective, the archaeologist suggests this choice was driven by reverence for supernatural forces. The cake-shaped form, with its circular body and small towers resembling contemporary cream decorations, symbolized the ancients' philosophical understanding of religion and society. Furthermore, the archaeologist proposes that modern cake-making may have been influenced by these ancient practices, showcasing the lasting cultural impact of our ancestors' habits and beliefs.<br><br>This interplay between history and contemporary customs highlights the human inclination to honor and seek connection with supernatural powers. The cake-shaped pottery stands as a testament to this inclination while leaving an indelible imprint on the evolution of human craftsmanship and cultural practices.",
@@ -106,11 +106,11 @@
     "image": "/images/20250208-1.jpg",
     "video": [
       {
-        "src": "/images/gradshow_16feb_reels.mp4",
+        "src": "https://www.youtube.com/embed/kSTjPduAcfY",
         "vertical": true
       },
       {
-        "src": "/images/final02.mp4",
+        "src": "https://www.youtube.com/embed/EeGgaPrUq_4",
         "vertical": true
       }
     ],

@@ -74,43 +74,78 @@ layout: base.njk
         {% endif %}
       {% endfor %}
 
-      <!-- Horizontal videos (regular) -->
-      {% for v in horizontalVideos %}
-        {% if v.src.includes("youtu.be") %}
-          {% set videoId = v.src | split("/") | last %}
-          <div class="video-wrapper">
+<!-- Horizontal videos (regular) -->
+{% for v in horizontalVideos %}
+    <!-- 檢查是否為 YouTube 或 Vimeo 嵌入連結 -->
+    {% if v.src.includes("youtu.be") or v.src.includes("youtube.com/watch") %}
+        <!-- 解析出 YouTube 影片 ID -->
+        {% set videoId = v.src | split("/") | last | split("?v=") | last %}
+        <div class="video-wrapper">
             <iframe src="https://www.youtube.com/embed/{{ videoId }}" frameborder="0"
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    title="Video (Horizontal)"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowfullscreen></iframe>
-          </div>
-        {% elif v.src.includes("youtube") %}
-          <div class="video-wrapper">
+        </div>
+    {% elif v.src.includes("youtube.com/embed") %}
+        <div class="video-wrapper">
             <iframe src="{{ v.src }}" frameborder="0"
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    title="Video (Horizontal)"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowfullscreen></iframe>
-          </div>
-        {% elif v.src.includes("vimeo") %}
-          <div class="video-wrapper">
+        </div>
+    {% elif v.src.includes("vimeo") %}
+        <div class="video-wrapper">
             <iframe src="{{ v.src }}" frameborder="0"
+                    title="Vimeo Video"
                     allow="autoplay; fullscreen; picture-in-picture"
                     allowfullscreen></iframe>
-          </div>
-        {% elif v.src.includes(".mp4") %}
-          <video controls src="{{ v.src }}"></video>
-        {% endif %}
-      {% endfor %}
-
-      <!-- Vertical videos (grid) -->
-      {% if verticalVideos.length > 0 %}
-      <div class="vertical-videos-grid">
-        {% for v in verticalVideos %}
-          <video controls src="{{ v.src }}" class="vertical-video"></video>
-        {% endfor %}
-      </div>
-      {% endif %}
+        </div>
+    <!-- 移除本地 .mp4 支援 -->
     {% endif %}
-  </section>
-  {% endif %}
+{% endfor %}
+
+<!-- Vertical videos (grid) -->
+{% if verticalVideos.length > 0 %}
+<div class="vertical-videos-grid">
+    {% for v in verticalVideos %}
+        <!-- 垂直影片的容器：使用 inline style 強制 9:16 比例 (16 / 9 = 177.77%) -->
+        {% if v.src.includes("youtu.be") or v.src.includes("youtube.com/watch") %}
+            {% set videoId = v.src | split("/") | last | split("?v=") | last %}
+            <div class="vertical-video" style="position: relative; padding-bottom: 177.77%; height: 0; overflow: hidden; border-radius: 8px;">
+                <iframe src="https://www.youtube.com/embed/{{ videoId }}" frameborder="0"
+                        title="Video (Vertical)"
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                </iframe>
+            </div>
+        {% elif v.src.includes("youtube.com/embed") %}
+             <div class="vertical-video" style="position: relative; padding-bottom: 177.77%; height: 0; overflow: hidden; border-radius: 8px;">
+                <iframe src="{{ v.src }}" frameborder="0"
+                        title="Video (Vertical)"
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                </iframe>
+            </div>
+        {% elif v.src.includes("vimeo") %}
+             <div class="vertical-video" style="position: relative; padding-bottom: 177.77%; height: 0; overflow: hidden; border-radius: 8px;">
+                <iframe src="{{ v.src }}" frameborder="0"
+                        title="Vimeo Video (Vertical)"
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                        allow="autoplay; fullscreen; picture-in-picture"
+                        allowfullscreen>
+                </iframe>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
+{% endif %}
+
+<!-- 假設這兩個片段就是您整個 work.njk 影片區塊的結束 -->
+{% endif %}
+</section>
+{% endif %}
 
   <!-- ===== 內文 ===== -->
   {% if work.content %}
