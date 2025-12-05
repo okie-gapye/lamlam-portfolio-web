@@ -1,3 +1,8 @@
+.about-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
 /* 單一作品頁樣式 */
 .work-page {
   font-family: var(--font-main);

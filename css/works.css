@@ -13,7 +13,7 @@
 .works-container {
   display: flex;
   gap: 8rem;
-  padding: 2rem 5%;
+  padding: 20px;
   max-width: 1400px;
   margin: 0 auto;
 }

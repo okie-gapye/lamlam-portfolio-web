@@ -3,7 +3,13 @@
 {% include "head.njk" %}
 <body>
   {% include "header.njk" %}
-  {{ content | safe }}
+
+  <!-- ===== [關鍵修正] 將頁面內容包裹在 <main> 標籤中 ===== -->
+  <!-- 根據 CSS 規則，<main> 區塊會自動伸展，將 footer 推到內容最底端 -->
+  <main>
+    {{ content | safe }}
+  </main>
+
   {% include "footer.njk" %}
 </body>
 </html>
