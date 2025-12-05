@@ -62,15 +62,15 @@ body {
 }
 
 /* --- 手機/小螢幕 字體縮小及間距調整 (避免溢出的關鍵修正) --- */
-@media (max-width: 767px) {
+@media (max-width: 750px) {
     /* 縮小所有連結的字體大小，防止因寬度不足而溢出 */
     #site_header nav a {
-        font-size: 0.9rem; /* 從 1rem 進一步縮小到 0.9rem */
+        font-size: 0.8rem; /* 從 1rem 進一步縮小到 0.9rem */
     }
 
     /* 縮小 Semi-underground Press 專用連結的字體大小 */
     #site_header nav a.semi-link {
-        font-size: 0.8rem; /* 從 0.85rem 進一步縮小到 0.8rem */
+        font-size: 0.7rem; /* 從 0.85rem 進一步縮小到 0.8rem */
         /* 由於字體縮小，line-height 也要微調以維持視覺平衡 */
         line-height: 1.1;
     }
@@ -89,8 +89,8 @@ body {
 #site_header nav a.semi-link {
     color: rgb(255, 0, 0);
     /* 桌面/平板的字體大小 */
-    font-size: 1.1rem;
-    line-height: 0.9;
+    font-size: 1rem;
+    line-height: 0.8;
     font-weight: 800;
     text-align: left;
     display: flex;
