@@ -1,45 +1,70 @@
+/* === GLOBAL LAYOUT FIXES (Sticky Footer & Overflow) === */
+
+/* 1. 全域啟用 Box Sizing，防止 padding/border 導致元素溢出 */
+html {
+    box-sizing: border-box;
+    /* 確保 body 最小高度能佔滿整個視窗 */
+    height: 100%;
+}
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+/* 2. Sticky Footer 核心邏輯：在 Body 上啟用 Flexbox 垂直佈局 */
+body {
+    min-height: 100vh; /* 確保 body 至少佔滿視窗高度 */
+    display: flex;
+    flex-direction: column;
+    margin: 0; /* 移除瀏覽器預設 margin */
+    /* 3. 修正 Header 超出框 (Overflow) - 隱藏水平溢出 */
+    overflow-x: hidden;
+}
+
+/* === HEADER SPECIFIC STYLES (根據使用者需求修改為置中對齊) === */
 #site_header {
-  display: flex;
-  justify-content: right; /* 改成置中，而非靠右 */
-  align-items: center;
-  position: sticky;
-  top: 0;
-  width: 100%;
-  padding: 8px 28px;
-  background-color: #000;
-  color: white;
-  z-index: 1000;
-  font-family: var(--font-main);
-  font-weight: 600;
+    display: flex;
+    /* 修正：將內容置中，而非靠右 */
+    justify-content: right;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    padding: 8px 28px;
+    background-color: #000;
+    color: white;
+    z-index: 1000;
+    /* 假設此變數已在其他地方定義，若無定義可能需要移除或替換 */
+    font-family: var(--font-main);
+    font-weight: 600;
 }
 
 #site_header nav {
-  display: flex;
-  gap: 2rem; /* 讓間距統一 */
-  align-items: center; /* 🔹確保垂直置中 */
+    display: flex;
+    gap: 2rem; /* 讓間距統一 */
+    align-items: center; /* 確保垂直置中 */
 }
 
 #site_header nav a {
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1.3rem;
-  line-height: 1; /* 統一行距 */
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.3rem;
+    line-height: 1; /* 統一行距 */
 }
 
 /* === Semi-underground Press 專用樣式 === */
 #site_header nav a.semi-link {
-  color: rgb(255, 0, 0);
-  font-size: 1.1rem;
-  line-height: 0.9;
-  font-weight: 800;
-  text-align: left;
-  display: flex;
-  flex-direction: column; /* 🔹讓它兩行分開但仍垂直置中 */
-  justify-content: center; /* 🔹置中整個區塊 */
+    color: rgb(255, 0, 0);
+    font-size: 1.1rem;
+    line-height: 0.9;
+    font-weight: 800;
+    text-align: left;
+    display: flex;
+    flex-direction: column; /* 讓它兩行分開但仍垂直置中 */
+    justify-content: center; /* 置中整個區塊 */
 }
 
 #site_header nav a.semi-link span {
-  color: rgb(255, 0, 0);
-  font-weight: 800;
+    color: rgb(255, 0, 0);
+    font-weight: 800;
 }

@@ -1,6 +1,6 @@
 /* Footer */
 #site_footer {
-  position: fixed;   /* 固定在畫面底部 */
+  position: relative;   /* 固定在畫面底部 */
   bottom: 0;
   left: 0;
   width: 100%;
