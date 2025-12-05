@@ -1,0 +1,49 @@
+/* 字體系統 */
+:root {
+  --font-main: "Host Grotesk", "Zen Kaku Gothic New", "Noto Sans HK", sans-serif;
+}
+
+/* 全局樣式 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  font-weight: 400;
+  color: #000;
+  overflow-x: hidden;
+}
+
+/* 背景圖 */
+.background {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/images/me_web.png'); /* 確認 images/ 下有 me_web.png */
+  background-size: 90%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+/* 內容區 */
+.bodycopy {
+  position: relative;
+  z-index: 1;
+  padding: 40px 60px;
+  color: #000;
+}
+
+/* header & footer */
+header, footer {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  position: relative;
+}

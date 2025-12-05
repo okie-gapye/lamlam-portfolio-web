@@ -1,0 +1,151 @@
+/* 單一作品頁樣式 */
+.work-page {
+  font-family: var(--font-main);
+  color: #000;
+  background-color: #fff;
+}
+
+/* 標題區 */
+.work-title {
+  margin: 60px 0 20px 60px;
+}
+
+.work-title h1 {
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* 主圖、影片 - 50% width centered */
+.work-main-media {
+  width: 50%;
+  margin: 2rem auto;
+}
+
+.work-main-media img,
+.work-main-media video {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.work-side {
+  display: none;
+}
+
+/* Video wrapper for aspect ratio */
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.vertical-videos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  margin: 2rem 0;
+}
+
+.vertical-video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 內文 */
+.work-bodycopy {
+  max-width: 800px;
+  margin: 2rem auto;
+  line-height: 1.8;
+}
+
+/* 輔助圖片（左右） */
+.work-side {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 3rem auto;
+  max-width: 1000px;
+}
+
+.work-side img,
+.work-side video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.work-side .side-left,
+.work-side .side-right {
+  flex: 1;
+}
+
+/* ===== 背景（可選） ===== */
+.work-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  pointer-events: none;
+}
+
+/* ===== Quotes (桌機版：三欄) ===== */
+.work-quotes {
+  display: flex;
+  justify-content: space-between;
+  gap: 2em;
+  margin: 3em auto;
+  max-width: 1000px;
+}
+
+.work-quote {
+  flex: 1;
+  padding: 1em;
+  font-size: 1em;
+  line-height: 1.8;
+  color: #333;
+  background: #fafafa;
+  border-left: 3px solid #e0e0e0;
+  writing-mode: horizontal-tb;
+  font-family: "Georgia", serif;
+}
+
+/* ===== 手機版 ===== */
+@media (max-width: 900px) {
+  .work-title {
+    margin-left: 20px;
+  }
+
+  .work-main-media {
+    width: 90%;
+  }
+
+  .work-side {
+    flex-direction: column;
+  }
+
+  /* quotes 手機版改成單欄 */
+  .work-quotes {
+    flex-direction: column;
+    gap: 1.5em;
+  }
+
+  .work-quote {
+    width: 100%;
+  }
+}

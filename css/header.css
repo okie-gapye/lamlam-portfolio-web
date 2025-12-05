@@ -1,0 +1,45 @@
+#site_header {
+  display: flex;
+  justify-content: right; /* 改成置中，而非靠右 */
+  align-items: center;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  padding: 8px 28px;
+  background-color: #000;
+  color: white;
+  z-index: 1000;
+  font-family: var(--font-main);
+  font-weight: 600;
+}
+
+#site_header nav {
+  display: flex;
+  gap: 2rem; /* 讓間距統一 */
+  align-items: center; /* 🔹確保垂直置中 */
+}
+
+#site_header nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.3rem;
+  line-height: 1; /* 統一行距 */
+}
+
+/* === Semi-underground Press 專用樣式 === */
+#site_header nav a.semi-link {
+  color: rgb(255, 0, 0);
+  font-size: 1.1rem;
+  line-height: 0.9;
+  font-weight: 800;
+  text-align: left;
+  display: flex;
+  flex-direction: column; /* 🔹讓它兩行分開但仍垂直置中 */
+  justify-content: center; /* 🔹置中整個區塊 */
+}
+
+#site_header nav a.semi-link span {
+  color: rgb(255, 0, 0);
+  font-weight: 800;
+}

@@ -1,0 +1,17 @@
+/* Footer */
+#site_footer {
+  position: fixed;   /* 固定在畫面底部 */
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: rgba(0,0,0,0);
+  color: black;
+  font-size: 1rem;
+  font-family: var(--font-main);
+  font-weight: 500;
+  z-index: 999;       /* 確保在最上層 */
+}

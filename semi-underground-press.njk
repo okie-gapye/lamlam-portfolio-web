@@ -1,0 +1,159 @@
+---
+permalink: /semi-underground-press/
+title: Semi-underground Press
+---
+{% include "head.njk" %}
+
+<link rel="stylesheet" href="/css/semi-underground-press.css">
+
+<body class="semi-press-page">
+    {% include "header.njk" %}
+
+    <div class="press-container">
+        <h1>Semi-underground Press</h1>
+
+        {# 定義即將舉辦活動的 ID 列表 #}
+        {% set upcoming_ids = [6, 7] %}
+
+        <!-- UPCOMING EVENT SECTION (即將舉辦活動區塊) -->
+        <section class="press-section upcoming-event">
+            <h2>Upcoming Event</h2>
+            <div class="poster-grid">
+                {# 篩選出 ID 6 和 7 的海報 #}
+                {% for poster in sup %}
+                    {% if poster.id in upcoming_ids %}
+                    <div class="poster-item"
+                         data-id="{{ poster.id }}"
+                         data-title="{{ poster.title }}"
+                         data-year="{{ poster.year }}"
+                         data-date="{{ poster.date }}"
+                         data-image="{{ poster.posterImage }}"
+                         data-description="{{ poster.description | safe }}">
+                        <img src="{{ poster.posterImage }}" alt="{{ poster.title }}">
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </section>
+
+        <!-- PAST PROJECT/EVENT SECTION (過去活動/專案區塊) -->
+        <section class="press-section past-events">
+            <h2>Past Project / Event</h2>
+            <div class="poster-grid">
+                {# 篩選出非 ID 6 和 7 的海報，並將列表反向排序，讓最新的活動在前 #}
+                {% for poster in sup | reverse %}
+                    {% if poster.id not in upcoming_ids %}
+                    <div class="poster-item"
+                         data-id="{{ poster.id }}"
+                         data-title="{{ poster.title }}"
+                         data-year="{{ poster.year }}"
+                         data-date="{{ poster.date }}"
+                         data-image="{{ poster.posterImage }}"
+                         data-description="{{ poster.description | safe }}">
+                        <img src="{{ poster.posterImage }}" alt="{{ poster.title }}">
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+
+    <!-- MODAL DIALOG (模態視窗 - 預設隱藏) -->
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <button id="modal-close-btn" class="modal-close-btn">&times;</button>
+
+            <div class="modal-image-container">
+                <img id="modal-image" class="modal-image" src="" alt="海報詳細圖片">
+            </div>
+
+            <div class="modal-details">
+                <h2 id="modal-title"></h2>
+                <p><strong>年份:</strong> <span id="modal-year"></span></p>
+                <p><strong>日期:</strong> <span id="modal-date"></span></p>
+
+                <h3>詳細內容</h3>
+                {# 這裡使用 innerHTML 插入帶有 <br> 的 description #}
+                <div id="modal-description" class="description-text"></div>
+            </div>
+        </div>
+    </div>
+
+    {% include "footer.njk" %}
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const modalOverlay = document.getElementById('modal-overlay');
+        const modalCloseBtn = document.getElementById('modal-close-btn');
+        const posterItems = document.querySelectorAll('.poster-item');
+
+        // 模態視窗內容元素
+        const modalTitle = document.getElementById('modal-title');
+        const modalImage = document.getElementById('modal-image');
+        const modalYear = document.getElementById('modal-year');
+        const modalDate = document.getElementById('modal-date');
+        const modalDescription = document.getElementById('modal-description');
+
+        /**
+         * 根據傳入的資料開啟模態視窗
+         * @param {Object} data - 海報詳細資料
+         */
+        const openModal = (data) => {
+            // 填入資料
+            modalTitle.textContent = data.title;
+            modalImage.src = data.image;
+            modalImage.alt = `Detail of ${data.title}`;
+            modalYear.textContent = data.year;
+            modalDate.textContent = data.date;
+            // 注意: description 內容包含 HTML 換行標籤 <br>，故使用 innerHTML
+            modalDescription.innerHTML = data.description;
+
+            // 顯示模態視窗
+            modalOverlay.classList.add('is-visible');
+            document.body.style.overflow = 'hidden'; // 防止背景滾動
+        };
+
+        /**
+         * 關閉模態視窗
+         */
+        const closeModal = () => {
+            modalOverlay.classList.remove('is-visible');
+            document.body.style.overflow = ''; // 恢復背景滾動
+        };
+
+        // --- 事件監聽器 ---
+
+        // 1. 點擊海報時開啟模態視窗
+        posterItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const data = {
+                    title: item.dataset.title,
+                    year: item.dataset.year,
+                    date: item.dataset.date,
+                    image: item.dataset.image,
+                    // 從 dataset 獲取 description
+                    description: item.dataset.description
+                };
+                openModal(data);
+            });
+        });
+
+        // 2. 點擊關閉按鈕
+        modalCloseBtn.addEventListener('click', closeModal);
+
+        // 3. 點擊覆蓋層時關閉 (點擊內容區域以外的地方)
+        modalOverlay.addEventListener('click', (event) => {
+            if (event.target === modalOverlay) {
+                closeModal();
+            }
+        });
+
+        // 4. 按下 Escape 鍵時關閉
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && modalOverlay.classList.contains('is-visible')) {
+                closeModal();
+            }
+        });
+    });
+    </script>
+</body>

@@ -1,0 +1,39 @@
+/* 主內容 */
+main {
+    height: 100vh; /* 讓背景圖占滿整個視窗 */
+}
+
+/* 背景層：固定在最底層 */
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/images/me_web.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0; /* ❗ 放在最底層 */
+}
+
+/* bodycopy 主內容 */
+.bodycopy {
+  position: relative;
+  z-index: 1;
+  padding-top: 40px;
+  padding-left: 60px;
+  color: #000000;
+  font-family: var(--font-main);
+  font-size: 1.8rem;
+  font-weight: 200;
+}
+
+.bodycopy a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.bodycopy a:hover {
+  opacity: 0.8;
+}

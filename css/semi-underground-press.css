@@ -1,0 +1,215 @@
+/* === GENERAL STYLES === */
+.semi-press-page {
+    color: #fff; /* 全文字體改為白色 */
+    background-color: #000; /* 頁面背景改為黑色 */
+    line-height: 1.6;
+}
+
+.press-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.press-container h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    text-align: left;
+    color: #FF0000;
+}
+
+.press-section h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-top: 50px;
+    margin-bottom: 25px;
+    padding-bottom: 5px;
+    /* 移除灰色分隔線 */
+    /* border-bottom: 2px solid #ccc; */
+}
+
+
+/* === POSTER GRID LAYOUT (三欄，等高，畫廊風格) === */
+
+.poster-grid {
+    display: grid;
+    /* 預設三欄 */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px; /* 增加間距 */
+}
+
+.poster-item {
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+
+    /* 讓容器有一個固定的高度來限制內容，實現等高效果 */
+    height: 400px;
+    /* 為 contain 模式下的空白區域設置背景色 */
+    background-color: #000;
+}
+
+.poster-item:hover {
+    transform: scale(0.98); /* 點擊前略微縮小作為互動回饋 */
+    opacity: 0.9;
+}
+
+.poster-item img {
+    width: 100%;
+    height: 100%;
+    /* 關鍵：從 cover 改為 contain，確保圖片完整顯示，不裁剪 */
+    object-fit: contain;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+/* 移除放大效果，保持簡潔 */
+/* .poster-item:hover img {
+    transform: scale(1.05);
+} */
+
+
+/* === RESPONSIVE DESIGN === */
+
+/* Tablet layout (兩欄) */
+@media (max-width: 1024px) {
+    .poster-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .poster-item {
+        height: 350px;
+    }
+}
+
+/* Mobile layout (一欄) */
+@media (max-width: 640px) {
+    .press-container {
+        padding: 10px;
+    }
+    .poster-grid {
+        grid-template-columns: 1fr;
+    }
+    .poster-item {
+        height: 300px;
+    }
+}
+
+
+/* === MODAL STYLES (配合黑色背景調整) === */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9); /* 稍微深一點的半透明背景 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
+    padding: 20px;
+}
+
+.modal-overlay.is-visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal-content {
+    background: #000; /* 模態視窗內容背景改為黑色 */
+    color: #fff; /* 模態視窗內容文字改為白色 */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1); /* 調整陰影顏色 */
+    max-width: 900px;
+    width: 95%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    display: grid;
+    gap: 30px;
+    grid-template-columns: 1fr 2fr;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #aaa; /* 關閉按鈕顏色 */
+    line-height: 1;
+    padding: 5px;
+    transition: color 0.2s;
+}
+
+.modal-close-btn:hover {
+    color: #fff;
+}
+
+.modal-image-container {
+    grid-column: 1 / 2;
+}
+
+.modal-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 6px;
+    /* 確保模態視窗中的圖片也能完整顯示 */
+    object-fit: contain;
+}
+
+.modal-details {
+    grid-column: 2 / 3;
+}
+
+.modal-details h2 {
+    font-size: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.modal-details h3 {
+    font-size: 1.2rem;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    border-bottom: 1px dashed #333; /* 調整分隔線顏色 */
+    padding-bottom: 5px;
+}
+
+.modal-details p {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.modal-details .description-text {
+    white-space: pre-wrap;
+}
+
+/* Modal Responsive Mobile View */
+@media (max-width: 768px) {
+    .modal-content {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+
+    .modal-image-container {
+        grid-column: 1 / -1;
+    }
+
+    .modal-details {
+        grid-column: 1 / -1;
+    }
+
+    .modal-details h2 {
+        font-size: 1.3rem;
+    }
+}

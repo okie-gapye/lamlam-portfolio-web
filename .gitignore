@@ -1,0 +1,8 @@
+# Node dependencies
+/node_modules
+
+# Eleventy output folder
+/_site
+
+# Local configuration files
+.env

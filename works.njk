@@ -1,0 +1,120 @@
+---
+permalink: /works/
+layout: base.njk
+title: Works
+---
+
+<div class="bodycopy">
+  <h2>Works</h2>
+</div>
+
+<main class="works-container">
+  <div class="carousel">
+    {% for work in works %}
+    <div class="carousel-item{% if loop.first %} active{% endif %}">
+      <a href="/works/{{ work.slug }}/">
+        <img src="{{ work.thumbnail }}" alt="{{ work.title }}">
+      </a>
+    </div>
+    {% endfor %}
+    <!-- 左右箭頭 -->
+    <button class="carousel-btn prev">&#10094;</button>
+    <button class="carousel-btn next">&#10095;</button>
+  </div>
+
+  <!-- 右側：年份與作品列表 -->
+  <div class="works-list">
+    {% set currentYear = null %}
+    {% for work in works %}
+      {% if work.year != currentYear %}
+        {% if currentYear %}
+          <hr>
+        {% endif %}
+        <h2>{{ work.year }}</h2>
+        {% set currentYear = work.year %}
+      {% endif %}
+      <div class="work-entry">
+        <p class="work-title">
+          <a href="/works/{{ work.slug }}/">{{ work.title }}</a>
+        </p>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="bottom-left-image">
+  <img src="/images/webBG03.png" alt="Description">
+  </div>
+</main>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const items = document.querySelectorAll(".carousel-item");
+  const nextBtn = document.querySelector(".carousel-btn.next");
+  const prevBtn = document.querySelector(".carousel-btn.prev");
+  let current = 0;
+  let isAnimating = false;
+  const slideDuration = 800; // ms
+  const autoInterval = 4000; // ms
+  let timer;
+
+  // 初始化：確保所有圖片位置正確
+  items.forEach((item, i) => {
+    item.style.transform = i === 0 ? "translateX(0%)" : "translateX(100%)";
+  });
+
+  function showSlide(newIndex, direction = 1) {
+    if (isAnimating || newIndex === current) return;
+    isAnimating = true;
+    const currentItem = items[current];
+    const nextItem = items[newIndex];
+    nextItem.style.transition = "none";
+    nextItem.style.transform = `translateX(${100 * direction}%)`;
+    nextItem.classList.add("active");
+
+    // 強制 reflow 以確保動畫正確啟動
+    void nextItem.offsetWidth;
+    currentItem.style.transition = "transform 0.8s ease";
+    nextItem.style.transition = "transform 0.8s ease";
+    currentItem.style.transform = `translateX(${-100 * direction}%)`;
+    nextItem.style.transform = "translateX(0%)";
+
+    setTimeout(() => {
+      currentItem.classList.remove("active");
+      currentItem.style.transition = "none";
+      currentItem.style.transform = `translateX(100%)`;
+      current = newIndex;
+      isAnimating = false;
+    }, slideDuration);
+  }
+
+  function nextSlide() {
+    const next = (current + 1) % items.length;
+    showSlide(next, 1);
+  }
+
+  function prevSlide() {
+    const prev = (current - 1 + items.length) % items.length;
+    showSlide(prev, -1);
+  }
+
+  function startAutoPlay() {
+    timer = setInterval(nextSlide, autoInterval);
+  }
+
+  function resetAutoPlay() {
+    clearInterval(timer);
+    startAutoPlay();
+  }
+
+  nextBtn.addEventListener("click", () => {
+    nextSlide();
+    resetAutoPlay();
+  });
+
+  prevBtn.addEventListener("click", () => {
+    prevSlide();
+    resetAutoPlay();
+  });
+
+  startAutoPlay();
+});
+</script>

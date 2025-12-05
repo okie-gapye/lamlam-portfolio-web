@@ -1,0 +1,151 @@
+---
+pagination:
+  data: "works"
+  size: 1
+  alias: work
+permalink: "works/{{ work.slug }}/"
+layout: base.njk
+---
+
+<main class="work-content">
+  <!-- ===== 標題區 ===== -->
+  <section class="work-title">
+    <h1>{{ work.title }}</h1>
+    {% if work.year %}
+      <p class="work-year">{{ work.year }}</p>
+    {% endif %}
+  </section>
+
+  <!-- ===== 主媒體（圖片） ===== -->
+  <section class="work-main-media">
+    {% if work.images and work.images.length > 0 %}
+      {% for img in work.images %}
+        {% if img %}
+          <img src="{{ img }}" alt="{{ work.title }}">
+        {% endif %}
+      {% endfor %}
+    {% elif work.image %}
+      {% if work.image is string %}
+        <img src="{{ work.image }}" alt="{{ work.title }}">
+      {% else %}
+        {% for img in work.image %}
+          {% if img %}
+            <img src="{{ img }}" alt="{{ work.title }}">
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    {% endif %}
+  </section>
+
+  <!-- ===== 主媒體（影片） ===== -->
+  {% if work.video %}
+  <section class="work-main-media">
+    {% if work.video is string %}
+      {% if work.video.includes("youtu.be") %}
+        {% set videoId = work.video | split("/") | last %}
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/{{ videoId }}" frameborder="0"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen></iframe>
+        </div>
+      {% elif work.video.includes("youtube") %}
+        <div class="video-wrapper">
+          <iframe src="{{ work.video }}" frameborder="0"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen></iframe>
+        </div>
+      {% elif work.video.includes("vimeo") %}
+        <div class="video-wrapper">
+          <iframe src="{{ work.video }}" frameborder="0"
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  allowfullscreen></iframe>
+        </div>
+      {% elif work.video.includes(".mp4") %}
+        <video controls src="{{ work.video }}"></video>
+      {% endif %}
+    {% else %}
+      {% set verticalVideos = [] %}
+      {% set horizontalVideos = [] %}
+      {% for v in work.video %}
+        {% if v.vertical %}
+          {% set _ = verticalVideos.push(v) %}
+        {% else %}
+          {% set _ = horizontalVideos.push(v) %}
+        {% endif %}
+      {% endfor %}
+
+      <!-- Horizontal videos (regular) -->
+      {% for v in horizontalVideos %}
+        {% if v.src.includes("youtu.be") %}
+          {% set videoId = v.src | split("/") | last %}
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/{{ videoId }}" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+          </div>
+        {% elif v.src.includes("youtube") %}
+          <div class="video-wrapper">
+            <iframe src="{{ v.src }}" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+          </div>
+        {% elif v.src.includes("vimeo") %}
+          <div class="video-wrapper">
+            <iframe src="{{ v.src }}" frameborder="0"
+                    allow="autoplay; fullscreen; picture-in-picture"
+                    allowfullscreen></iframe>
+          </div>
+        {% elif v.src.includes(".mp4") %}
+          <video controls src="{{ v.src }}"></video>
+        {% endif %}
+      {% endfor %}
+
+      <!-- Vertical videos (grid) -->
+      {% if verticalVideos.length > 0 %}
+      <div class="vertical-videos-grid">
+        {% for v in verticalVideos %}
+          <video controls src="{{ v.src }}" class="vertical-video"></video>
+        {% endfor %}
+      </div>
+      {% endif %}
+    {% endif %}
+  </section>
+  {% endif %}
+
+  <!-- ===== 內文 ===== -->
+  {% if work.content %}
+  <section class="work-bodycopy">
+    {{ work.content | safe }}
+  </section>
+  {% endif %}
+
+  <!-- ===== 輔助圖片（左右） ===== -->
+  {% set allImages = work.images or work.image %}
+  {% if allImages %}
+  <section class="work-side">
+    {% if allImages is string %}
+      {% set allImages = [allImages] %}
+    {% endif %}
+    {% set midpoint = (allImages | length / 2) | round(0, 'ceil') | int %}
+
+  </section>
+  {% endif %}
+
+  <!-- ===== 多語 Quote 區（3 欄垂直） ===== -->
+  {% if work.quotes %}
+  <section class="work-quotes">
+    {% if work.quotes.en %}
+      <blockquote class="work-quote lang-en">{{ work.quotes.en }}</blockquote>
+    {% endif %}
+    {% if work.quotes.zh %}
+      <blockquote class="work-quote lang-zh">{{ work.quotes.zh }}</blockquote>
+    {% endif %}
+    {% if work.quotes.jp %}
+      <blockquote class="work-quote lang-jp">{{ work.quotes.jp }}</blockquote>
+    {% endif %}
+    {% if work.quotes.de %}
+      <blockquote class="work-quote lang-de">{{ work.quotes.de }}</blockquote>
+    {% endif %}
+  </section>
+  {% endif %}
+</main>
